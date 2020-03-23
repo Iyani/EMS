@@ -25,9 +25,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
    List<Employee> findAllEmployeeByNameIgnoreCase(String employeeName);
 
    // List<Employee> deleteByName(String employeeName);
-   @Modifying
-   @Query("DELETE FROM Employee f WHERE f.employeeName=:employeeName")
-   void deleteByName(String employeeName);
+//   @Modifying
+//   @Query("DELETE FROM Employee f WHERE f.employeeName=:employeeName")
+//   void deleteByName(String employeeName);
 }
 
 

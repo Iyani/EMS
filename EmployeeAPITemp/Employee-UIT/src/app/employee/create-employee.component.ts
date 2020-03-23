@@ -68,25 +68,6 @@ export class CreateEmployeeComponent implements OnInit {
   onSubmit(): void {}
 
   public registerNow(){
-    //console.log("check");
-
-      // let resp=this.service.getEmployeeByName("Iyani");
-        //resp.subscribe((data)=>this.message=data)
-
-    //let resp=this.getEmployee(this.employee.employeeName);
-
-    //if (this.service.getAllEmployees().employeeName == "P"){
-    //  console.log("hddj");
-    //}
-    //console.log(resp);
-    //this.service.getEmployeeByName(this.employee.employeeName);).subscribe((data)=>console.log(data));
-    //console.log("success");
-    //console.log(this.getEmployee(this.employee.employeeName).employeeName;);
-    //console.log(this.employee.employeeName);
-    //if (this.employee.employeeName== this.getEmployee(this.employee.employeeName).employeeName){
-     // console.log(this.getEmployee(this.employee.employeeName).employeeName);
-   // }
-
 
     if (this.employeeForm.invalid){
        this.message = "Please fill the required details";
