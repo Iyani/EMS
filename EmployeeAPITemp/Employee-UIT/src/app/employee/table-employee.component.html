@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--<html lang="en">-->
+<head>
+  <title>Table</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<div class="container">
+  <div class="row">
+    <div id="input-group md-form form-sm form-2 pl-0">
+      <div class="input-group col-md-12" style="text-align: center">
+        <input id="employeeName" type="text" [(ngModel)]="employeeName" class="form-control my-0 py-1 red-border" placeholder="Search With Name"  name="employeeName"/>
+        <span class="input-group-btn">
+            <button class="btn btn-danger" type="button" (click)="findEmployeeByName()">
+                <span class=" glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+      <table class="table table-striped custab">
+        <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Email</th>
+          <th>Date Of Birth</th>
+          <th>Skills</th>
+          <th>Delete</th>
+          <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let employee of users">
+
+          <td>{{employee.employeeName}}</td>
+          <td>{{employee.employeeEmail}}</td>
+          <td>{{employee.dateOfBirth}}</td>
+          <td>{{employee.skills}}</td>
+          <td class="text-center"><button class="btn btn-danger btn-xs" (click)="delEmployeeById(employee.id)"><span class="glyphicon glyphicon-trash"></span></button></td>
+          <td class="text-center"><button class="btn btn-primary btn-xs" (click)="editEmployee(employee.employeeName)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!--          <td class="text-center"><button class="btn btn-danger btn-xs" (click)="delEmployee(employee.employeeName)"><span class="glyphicon glyphicon-trash"></span></button></td>-->

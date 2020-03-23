@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--<html lang="en">-->
+<head>
+  <title>Create Form</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<div style="text-align:center">
+  <h5>{{message}}</h5>
+</div>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Details of the Employee</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="employeeName">First Name*</label>
+        <div class="col-sm-8">
+          <input id="employeeName" formControlName="employeeName" type="text" [(ngModel)]="employee.employeeName" class="form-control" name="employeeName" [disabled]="upNameIsFilled">
+          <br>
+        </div>
+        <div *ngIf="employeeForm.controls['employeeName'].invalid && (employeeForm.controls['employeeName'].dirty || employeeForm.controls['employeeName'].touched)" class="alert alert-danger">
+        <div *ngIf="employeeForm.controls['employeeName'].errors.required">
+          Name is required.
+        </div>
+      </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="employeeEmail">Email*</label>
+        <div class="col-sm-8">
+          <input id="employeeEmail" type="text" [(ngModel)]="employee.employeeEmail" placeholder="abc@email.com" formControlName="employeeEmail" class="form-control" name="employeeEmail" required pattern="^[a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$" >
+        </div>
+        <div *ngIf="employeeForm.controls['employeeEmail'].invalid && (employeeForm.controls['employeeEmail'].dirty || employeeForm.controls['employeeEmail'].touched)" class="alert alert-danger">
+          <div *ngIf="employeeForm.controls['employeeEmail'].errors.required && employeeForm.controls['employeeEmail'].touched">
+            Email address is required.
+          </div>
+          <div *ngIf="employeeForm.controls['employeeEmail'].errors.pattern && employeeForm.controls['employeeEmail'].touched">
+            Email address is invalid.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="dateOfBirth">Date of Birth*</label>
+        <div class="col-sm-8">
+          <input id="dateOfBirth" type="date" [(ngModel)]="employee.dateOfBirth" placeholder="MM/DD/YYYY" class="form-control" formControlName="dateOfBirth" name="dateOfBirth">
+        </div>
+        <div *ngIf="employeeForm.controls['dateOfBirth'].invalid && (employeeForm.controls['dateOfBirth'].dirty || employeeForm.controls['dateOfBirth'].touched)" class="alert alert-danger">
+          <div *ngIf="employeeForm.controls['dateOfBirth'].errors.required">
+            Date of Birth is required.
+          </div>
+        </div>
+      </div>
+   <div class="form-group">
+        <label class="col-sm-2 control-label" for="skills">Skills</label>
+
+          <div class="col-sm-8">
+            <label class="col-sm-4 control-label" class="form-control" disabled>Please select a skill/s from (-,JAVA,Python,C,C#,C++,.NET,Xamarin) </label>
+            <input id="skills" type="text" [(ngModel)]="employee.skills" placeholder="Skill Name" formControlName="skills"  name="skills" class="form-control" >
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+  </form>
+    <div class="panel-footer">
+      <div class="btn-toolbar">
+         <button class="btn btn-primary" type="submit" (click)="registerNow()" [disabled]="isSaveDisabled">Save</button>
+          <button class="btn btn-danger" type="button" (click)="updateNow(employee)"  [disabled]="isUpdateDisabled" >Update</button>
+      </div>
+    </div>
+
+
